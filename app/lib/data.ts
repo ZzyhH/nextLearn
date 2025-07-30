@@ -8,8 +8,9 @@ import {
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
+import { createSecureConnection } from './database-security';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+const sql = createSecureConnection();
 
 export async function fetchRevenue() {
   try {
